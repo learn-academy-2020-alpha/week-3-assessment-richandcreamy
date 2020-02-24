@@ -7,19 +7,19 @@
 class App extends Component{
   constructor(){
     super()
-    // 1.
+    // 1. Setting the class of App that will inherit the properties of Component. Initialize these component properties on load and allow for props of the parent class.
     this.state = {
       userInput: "",
     }
   }
 
   robot = (e) => {
-    // 2.
+    // 2. Function to set userInput state
     this.setState({ userInput: e.target.value})
   }
 
   render(){
-    // 3.
+    // 3. Destructure this.state.userInput to this.robot and allow userInput to be renderable (visible) to the DOM
     let { userInput } = this.state
 
     return(
@@ -28,16 +28,16 @@ class App extends Component{
 
         <h3>Enter text here:</h3>
         <input
-          {/* 4. */}
+          {/* 4. Create div to house and make visible components for user to see and interact with */} 
           onChange={ this.robot }
-          {/* 5. */}
+          {/* 5. Allow for user input to pass through to the state of userInput live with each interaction   */}
           value={ userInput }
         />
 
         <div>
-          {/* 6. */}
+          {/* 6. Create div for child components */}
           <GoodRobot
-            {/* 7. */}
+            {/* 7. Call Good Robot component to the DOM*/}
             userInput={ userInput }
           />
           <BadRobot
@@ -58,14 +58,14 @@ export default App
 class GoodRobot extends Component{
   render(){
     return(
-      // 8.
+      // 8. The class of GoodRobot inherits Component properties
       <div>
         <h3>Good Robot</h3>
-        {/* 9. */}
+        {/* 9. Div that will display to user when component is called*/}
         <h4>I hear you saying { this.props.userInput }. Is that correct?</h4>
       </div>
     )
   }
 }
-// 10.
+// 10. Inherit the properties of userInput from parent class.
 export default GoodRobot
